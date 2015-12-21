@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@class ViewDeckContainer;
+
+@interface ViewController : UITabBarController
 
 
 @end

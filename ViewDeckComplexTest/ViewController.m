@@ -7,16 +7,39 @@
 //
 
 #import "ViewController.h"
+#import "TabOneViewController.h"
+#import "TabOneViewController2.h"
+#import "ViewDeckContainer.h"
 
 @interface ViewController ()
 
+@property(nonatomic, strong) ViewDeckContainer *viewDeckContainer;
 @end
 
 @implementation ViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder {
+    self = [super initWithCoder:coder];
+    if (!self) return nil;
+
+
+    self.viewDeckContainer = [[ViewDeckContainer alloc] init];
+
+    self.viewControllers = @[
+            [[TabOneViewController alloc] init],
+            [[TabOneViewController2 alloc] init],
+            self.viewDeckContainer.viewDeckController
+    ];
+
+    [self.viewDeckContainer loadVC3];
+
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    self.tabBar.translucent = NO;
 }
 
 - (void)didReceiveMemoryWarning {
